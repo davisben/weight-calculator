@@ -1,0 +1,30 @@
+{
+  "name": "weight-calculator",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "keystone": ">4.0.0-beta.4",
+    "pug": ">2.0.0-beta10",
+    "bourbon": ">5.0.0-beta.6",
+    "bourbon-neat": "2.0.x",
+    "bourbon-bitters": "thoughtbot/bitters#v1.5.0",
+    "connect-mongo": "1.3.x",
+    "react": "0.13.x",
+    "request": "2.60.x",
+    "dotenv": "4.0.x",
+    "babel-core": "5.8.x",
+    "babel-plugin-object-assign": "1.2.x",
+    "babelify": "6.1.x",
+    "browserify-middleware": "7.0.x",
+    "node-sass": "4.5.x",
+    "node-sass-middleware": "0.11.x"
+  },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.3.0"
+  },
+  "scripts": {
+    "start": "node keystone.js"
+  },
+  "main": "keystone.js"
+}
