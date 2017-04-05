@@ -1,21 +1,28 @@
 var babelify = require('babelify');
 var browserify = require('browserify-middleware');
 var keystone = require('keystone');
+var middleware = require('./middleware');
 
 var importRoutes = keystone.importer(__dirname);
 
-// Setup Route Bindings
-exports = module.exports = function(app) {
+// Middleware
+keystone.pre('routes', middleware.initLocals);
+keystone.pre('render', middleware.flashMessages);
 
+// Load Routes
+var routes = {
+	views: importRoutes('./views'),
+};
+
+exports = module.exports = function(app) {
 	app.use('/js', browserify('./client/scripts', {
 		transform: [babelify.configure({
-			plugins: ['object-assign']
+			plugins: ['es2015', 'react']
 		})]
 	}));
 
-	// Views
-	app.use(function(req, res) {
-		res.render('index');
-	});
+	app.get('/', routes.views.index);
 
+	app.all('/login', routes.views.login);
+	app.get('/logout', routes.views.logout);
 };

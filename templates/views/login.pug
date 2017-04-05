@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+block content
+	form(method='post', action='/login').auth-form
+		input(type='hidden', name='action', value='login')
+		.form-item
+			label(for='user').hide-visually Username or Email
+			input(type='text', name='user', placeholder='username or email', value=locals.form ? locals.form.user : null)
+		.form-item
+			label(for='password').hide-visually Password
+			input(type='password', name='password', placeholder='password', value=locals.form ? locals.form.password : null)
+
+		.form-action
+			button(type='submit') Login
